@@ -44,15 +44,15 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=erkcet&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&ring_color=58a6ff&icon_color=58a6ff" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=erkcet&show_icons=true&theme=default&hide_border=true" />
-    <img height="170" src="https://github-readme-stats.vercel.app/api?username=erkcet&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=erkcet&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=erkcet&theme=default" />
+    <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=erkcet&theme=github_dark" />
   </picture>
   &nbsp;
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=erkcet&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=erkcet&layout=compact&theme=default&hide_border=true" />
-    <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=erkcet&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=erkcet&theme=github_dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=erkcet&theme=default" />
+    <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=erkcet&theme=github_dark" />
   </picture>
 </p>
 
