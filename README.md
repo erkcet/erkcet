@@ -1,6 +1,6 @@
 <div align="center">
 
-# Erkan Çetinkaya
+# erkcet
 
 ### Software systems · automation · self-hosted infrastructure
 
