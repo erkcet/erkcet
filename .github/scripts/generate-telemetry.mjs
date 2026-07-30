@@ -35,8 +35,6 @@ async function fetchGitHubData(login, token) {
   const query = `
     query EngineeringTelemetry($login: String!, $from: DateTime!, $to: DateTime!) {
       user(login: $login) {
-        login
-        name
         repositories(
           first: 100
           ownerAffiliations: OWNER
@@ -116,8 +114,6 @@ function normalizeGitHubData(user) {
       : 0;
 
   return {
-    login: user.login,
-    name: user.name || user.login,
     contributions: collection.contributionCalendar.totalContributions,
     publicRepositories: user.repositories.totalCount,
     activeWeeks: weeklyTotals.filter((value) => value > 0).length,
@@ -177,15 +173,15 @@ function buildSignalGeometry(weeklyTotals) {
     .join(" ");
 
   const bars = points
-    .map((point) => {
+    .map((point, index) => {
       const height = Math.max(2, baseline - point.y);
       return `<rect x="${(point.x - 2.5).toFixed(2)}" y="${(
         baseline - height
       ).toFixed(2)}" width="5" height="${height.toFixed(
         2,
-      )}" rx="2.5" fill="url(#signalBar)" opacity="${
+      )}" rx="2.5" fill="url(#signalBar)" class="signal-bar" style="--target-opacity:${
         point.value > 0 ? "0.72" : "0.12"
-      }"/>`;
+      };animation-delay:${980 + index * 14}ms"/>`;
     })
     .join("");
 
@@ -198,9 +194,9 @@ function buildSignalGeometry(weeklyTotals) {
   return { bars, linePath, peak };
 }
 
-function createMetricCard({ x, label, value, accent }) {
+function createMetricCard({ x, label, value, accent, index }) {
   return `
-    <g transform="translate(${x} 93)">
+    <g transform="translate(${x} 93)" class="metric-card metric-${index + 1}">
       <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
       <rect x="0" y="13" width="3" height="43" rx="1.5" fill="${accent}"/>
       <text x="18" y="29" class="metric-label">${escapeXml(label)}</text>
@@ -210,8 +206,8 @@ function createMetricCard({ x, label, value, accent }) {
 
 function createSvg(data) {
   const signal = buildSignalGeometry(data.weeklyTotals);
-  const title = `${data.name} — Engineering Signal`;
-  const subtitle = `PUBLIC GITHUB ACTIVITY // ${data.login.toUpperCase()}`;
+  const title = "Engineering Signal — Public GitHub Activity";
+  const subtitle = "SYSTEMS // AUTOMATION // INFRASTRUCTURE";
 
   const metrics = [
     {
@@ -238,7 +234,7 @@ function createSvg(data) {
 
   const cards = metrics
     .map((metric, index) =>
-      createMetricCard({ ...metric, x: 42 + index * 219 }),
+      createMetricCard({ ...metric, x: 42 + index * 219, index }),
     )
     .join("");
 
@@ -311,6 +307,67 @@ function createSvg(data) {
         font-weight: 600;
         letter-spacing: 0.7px;
       }
+      .reveal,
+      .metric-card,
+      .signal-bar,
+      .peak-dot {
+        opacity: 0;
+      }
+      .header-reveal {
+        animation: fadeInAnimation 0.55s ease-out 0.05s forwards;
+      }
+      .status-reveal {
+        animation: fadeInAnimation 0.45s ease-out 0.2s forwards;
+      }
+      .metric-card {
+        animation: fadeInAnimation 0.42s ease-out forwards;
+      }
+      .metric-1 { animation-delay: 0.3s; }
+      .metric-2 { animation-delay: 0.42s; }
+      .metric-3 { animation-delay: 0.54s; }
+      .metric-4 { animation-delay: 0.66s; }
+      .chart-reveal {
+        animation: fadeInAnimation 0.5s ease-out 0.75s forwards;
+      }
+      .signal-bar {
+        animation: revealBarAnimation 0.22s ease-out forwards;
+      }
+      .signal-line {
+        stroke-dasharray: 1200;
+        stroke-dashoffset: 1200;
+        animation: drawSignalAnimation 1.25s ease-out 0.95s forwards;
+      }
+      .peak-dot {
+        animation: fadeInAnimation 0.3s ease-out 1.85s forwards;
+      }
+      @keyframes fadeInAnimation {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes revealBarAnimation {
+        from { opacity: 0; }
+        to { opacity: var(--target-opacity); }
+      }
+      @keyframes drawSignalAnimation {
+        from { stroke-dashoffset: 1200; }
+        to { stroke-dashoffset: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal,
+        .metric-card,
+        .signal-bar,
+        .peak-dot {
+          animation: none;
+          opacity: 1;
+        }
+        .signal-bar {
+          opacity: var(--target-opacity);
+        }
+        .signal-line {
+          animation: none;
+          stroke-dashoffset: 0;
+        }
+      }
     </style>
   </defs>
 
@@ -318,14 +375,14 @@ function createSvg(data) {
   <rect x="1" y="1" width="958" height="348" rx="18" fill="url(#microGrid)" opacity="0.55"/>
   <path d="M0 18Q0 0 18 0H942Q960 0 960 18V22H0Z" fill="url(#headerAccent)" opacity="0.9"/>
 
-  <g transform="translate(42 41)">
+  <g transform="translate(42 41)" class="reveal header-reveal">
     <circle cx="5" cy="5" r="5" fill="#22D3EE" opacity="0.22"/>
     <circle cx="5" cy="5" r="2.4" fill="#67E8F9"/>
     <text x="20" y="9" class="eyebrow">${escapeXml(subtitle)}</text>
-    <text x="0" y="41" class="name">${escapeXml(data.name.toUpperCase())}</text>
+    <text x="0" y="41" class="name">ENGINEERING SIGNAL</text>
   </g>
 
-  <g transform="translate(796 42)">
+  <g transform="translate(796 42)" class="reveal status-reveal">
     <rect width="122" height="30" rx="15" fill="#0C2630" stroke="#1B5B66"/>
     <circle cx="18" cy="15" r="4" fill="#34D399"/>
     <circle cx="18" cy="15" r="8" fill="#34D399" opacity="0.1"/>
@@ -334,14 +391,14 @@ function createSvg(data) {
 
   ${cards}
 
-  <g>
+  <g class="reveal chart-reveal">
     <rect x="42" y="184" width="876" height="139" rx="13" fill="#09111F" stroke="#1E2B47"/>
     <text x="58" y="207" class="chart-label">52-WEEK CONTRIBUTION FREQUENCY</text>
     <text x="902" y="207" text-anchor="end" class="microcopy">PUBLIC ACTIVITY // SQRT SCALE</text>
     <path d="M58 236H902M58 272H902M58 308H902" stroke="#344360" stroke-width="0.7" stroke-dasharray="3 7" opacity="0.48"/>
     ${signal.bars}
-    <path d="${signal.linePath}" fill="none" stroke="#6EE7F9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.84" filter="url(#signalGlow)"/>
-    <circle cx="${signal.peak.x.toFixed(2)}" cy="${signal.peak.y.toFixed(2)}" r="4.5" fill="#E879F9" stroke="#F5D0FE" stroke-width="1.4"/>
+    <path d="${signal.linePath}" class="signal-line" fill="none" stroke="#6EE7F9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.84" filter="url(#signalGlow)"/>
+    <circle cx="${signal.peak.x.toFixed(2)}" cy="${signal.peak.y.toFixed(2)}" r="4.5" class="peak-dot" fill="#E879F9" stroke="#F5D0FE" stroke-width="1.4"/>
     <text x="58" y="339" class="microcopy">T−52W</text>
     <text x="902" y="339" text-anchor="end" class="microcopy">NOW // UPDATED ${escapeXml(
       data.updatedAt,
