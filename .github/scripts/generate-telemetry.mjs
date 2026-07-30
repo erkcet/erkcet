@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 
 const GRAPHQL_ENDPOINT = "https://api.github.com/graphql";
-const DEFAULT_OUTPUT_PATH = "assets/engineering-telemetry.svg";
+const DEFAULT_OUTPUT_PATH = "assets/engineering-signal.svg";
 
 function escapeXml(value) {
   // GitHub profile fields are external input, so keep them safe inside the SVG.
