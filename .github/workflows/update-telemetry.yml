@@ -28,18 +28,20 @@ jobs:
         env:
           GITHUB_LOGIN: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT_PATH: ${{ runner.temp }}/engineering-telemetry.svg
+          OUTPUT_PATH: ${{ runner.temp }}/engineering-signal.svg
         run: node .github/scripts/generate-telemetry.mjs
 
       - name: Publish the generated asset
         env:
-          GENERATED_SVG: ${{ runner.temp }}/engineering-telemetry.svg
+          GENERATED_SVG: ${{ runner.temp }}/engineering-signal.svg
         run: |
           git fetch origin telemetry
           git switch --create telemetry --track origin/telemetry
           mkdir -p assets
+          # Publish a fresh URL and keep the legacy URL name-free.
+          cp "${GENERATED_SVG}" assets/engineering-signal.svg
           cp "${GENERATED_SVG}" assets/engineering-telemetry.svg
-          git add assets/engineering-telemetry.svg
+          git add assets/engineering-signal.svg assets/engineering-telemetry.svg
 
           if git diff --cached --quiet; then
             echo "The engineering telemetry is already current."
