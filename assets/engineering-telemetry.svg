@@ -105,7 +105,7 @@
       <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
       <rect x="0" y="13" width="3" height="43" rx="1.5" fill="#22D3EE"/>
       <text x="18" y="29" class="metric-label">ACTIVE WEEKS</text>
-      <text x="18" y="55" class="metric-value">14 / 53</text>
+      <text x="18" y="55" class="metric-value">16 / 53</text>
     </g>
     <g transform="translate(699 93)">
       <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
