@@ -5,6 +5,7 @@ const GRAPHQL_ENDPOINT = "https://api.github.com/graphql";
 const DEFAULT_OUTPUT_PATH = "assets/engineering-telemetry.svg";
 
 function escapeXml(value) {
+  // GitHub profile fields are external input, so keep them safe inside the SVG.
   return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -18,6 +19,7 @@ function formatNumber(value) {
 }
 
 function createDateRange() {
+  // GitHub contribution calendars use an inclusive rolling one-year window.
   const to = new Date();
   const from = new Date(to);
   from.setUTCFullYear(from.getUTCFullYear() - 1);
@@ -92,6 +94,7 @@ async function fetchGitHubData(login, token) {
 
 function normalizeGitHubData(user) {
   const collection = user.contributionsCollection;
+  // GitHub returns 52 or 53 calendar columns depending on the boundary dates.
   const weeklyTotals = collection.contributionCalendar.weeks.map((week) =>
     week.contributionDays.reduce(
       (total, day) => total + day.contributionCount,
@@ -127,6 +130,7 @@ function normalizeGitHubData(user) {
 async function loadTelemetryData() {
   const fixturePath = process.env.TELEMETRY_FIXTURE_PATH;
   if (fixturePath) {
+    // A fixture makes visual QA deterministic without requiring a local token.
     return JSON.parse(await readFile(fixturePath, "utf8"));
   }
 
@@ -143,6 +147,7 @@ async function loadTelemetryData() {
 }
 
 function buildSignalGeometry(weeklyTotals) {
+  // Keep the newest 53 weeks so the chart retains a stable visual width.
   const values = weeklyTotals.slice(-53);
   while (values.length < 53) {
     values.unshift(0);
@@ -157,6 +162,7 @@ function buildSignalGeometry(weeklyTotals) {
 
   const points = values.map((value, index) => {
     const x = left + index * step;
+    // A square-root scale preserves quieter engineering periods beside spikes.
     const normalized = Math.sqrt(value / maxValue);
     const y = baseline - normalized * (baseline - top);
 
