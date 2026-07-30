@@ -76,8 +76,8 @@ I am **Erkan**, a computer engineer focused on dependable software, automation, 
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=erkcet&show_icons=true&include_all_commits=true&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9&icon_color=7C3AED&ring_color=58A6FF" alt="Erkan's GitHub statistics" />
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=erkcet&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9" alt="Most-used public repository languages" />
+<img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=erkcet&theme=github_dark" alt="Erkan's GitHub statistics" />
+<img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=erkcet&theme=github_dark" alt="Most-used public repository languages" />
 
 </div>
 
