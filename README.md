@@ -18,6 +18,12 @@ I am a computer engineer who enjoys building dependable software, automating rep
 
 <br /><br />
 
+### GitHub Activity
+
+<img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=erkcet&theme=tokyonight" alt="Erkan Cetinkaya's GitHub activity overview" />
+
+<br />
+
 <a href="https://erk.gg"><img src="https://img.shields.io/badge/Website-0D1117?style=for-the-badge&logo=googlechrome&logoColor=58A6FF" alt="Website" /></a>
 <a href="https://x.com/1erkan"><img src="https://img.shields.io/badge/@1erkan-0D1117?style=for-the-badge&logo=x&logoColor=FFFFFF" alt="X" /></a>
 <a href="mailto:erkan@erk.gg"><img src="https://img.shields.io/badge/Email-0D1117?style=for-the-badge&logo=gmail&logoColor=EA4335" alt="Email" /></a>
