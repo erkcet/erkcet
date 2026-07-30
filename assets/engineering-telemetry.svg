@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="350" viewBox="0 0 960 350" role="img" aria-labelledby="title desc">
+  <title id="title">Erkan Cetinkaya — Engineering Signal</title>
+  <desc id="desc">A custom engineering telemetry panel showing public GitHub activity over the last year.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080D18"/>
+      <stop offset="0.52" stop-color="#0C1324"/>
+      <stop offset="1" stop-color="#11182B"/>
+    </linearGradient>
+    <linearGradient id="headerAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="0.55" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="signalBar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="0.55" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <filter id="signalGlow" x="-30%" y="-60%" width="160%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="microGrid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M18 0H0V18" fill="none" stroke="#314160" stroke-width="0.5" opacity="0.16"/>
+    </pattern>
+    <style>
+      text {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+      .eyebrow {
+        fill: #7DD3FC;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+      }
+      .name {
+        fill: #F8FAFC;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+      .metric-label {
+        fill: #7182A6;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .metric-value {
+        fill: #EAF1FF;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .chart-label {
+        fill: #8293B7;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+      }
+      .microcopy {
+        fill: #607091;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.7px;
+      }
+    </style>
+  </defs>
+
+  <rect x="0.75" y="0.75" width="958.5" height="348.5" rx="18" fill="url(#background)" stroke="#283755" stroke-width="1.5"/>
+  <rect x="1" y="1" width="958" height="348" rx="18" fill="url(#microGrid)" opacity="0.55"/>
+  <path d="M0 18Q0 0 18 0H942Q960 0 960 18V22H0Z" fill="url(#headerAccent)" opacity="0.9"/>
+
+  <g transform="translate(42 41)">
+    <circle cx="5" cy="5" r="5" fill="#22D3EE" opacity="0.22"/>
+    <circle cx="5" cy="5" r="2.4" fill="#67E8F9"/>
+    <text x="20" y="9" class="eyebrow">PUBLIC GITHUB ACTIVITY // ERKCET</text>
+    <text x="0" y="41" class="name">ERKAN CETINKAYA</text>
+  </g>
+
+  <g transform="translate(796 42)">
+    <rect width="122" height="30" rx="15" fill="#0C2630" stroke="#1B5B66"/>
+    <circle cx="18" cy="15" r="4" fill="#34D399"/>
+    <circle cx="18" cy="15" r="8" fill="#34D399" opacity="0.1"/>
+    <text x="32" y="19" class="eyebrow" style="font-size:9px;letter-spacing:1.2px;fill:#6EE7B7">LIVE SIGNAL</text>
+  </g>
+
+  
+    <g transform="translate(42 93)">
+      <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
+      <rect x="0" y="13" width="3" height="43" rx="1.5" fill="#61DAFB"/>
+      <text x="18" y="29" class="metric-label">CONTRIBUTIONS / 12M</text>
+      <text x="18" y="55" class="metric-value">436</text>
+    </g>
+    <g transform="translate(261 93)">
+      <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
+      <rect x="0" y="13" width="3" height="43" rx="1.5" fill="#8B5CF6"/>
+      <text x="18" y="29" class="metric-label">PUBLIC REPOSITORIES</text>
+      <text x="18" y="55" class="metric-value">15</text>
+    </g>
+    <g transform="translate(480 93)">
+      <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
+      <rect x="0" y="13" width="3" height="43" rx="1.5" fill="#22D3EE"/>
+      <text x="18" y="29" class="metric-label">ACTIVE WEEKS</text>
+      <text x="18" y="55" class="metric-value">14 / 53</text>
+    </g>
+    <g transform="translate(699 93)">
+      <rect width="205" height="69" rx="12" fill="#10182B" stroke="#243252"/>
+      <rect x="0" y="13" width="3" height="43" rx="1.5" fill="#A78BFA"/>
+      <text x="18" y="29" class="metric-label">COMMIT SIGNAL</text>
+      <text x="18" y="55" class="metric-value">75%</text>
+    </g>
+
+  <g>
+    <rect x="42" y="184" width="876" height="139" rx="13" fill="#09111F" stroke="#1E2B47"/>
+    <text x="58" y="207" class="chart-label">52-WEEK CONTRIBUTION FREQUENCY</text>
+    <text x="902" y="207" text-anchor="end" class="microcopy">PUBLIC ACTIVITY // SQRT SCALE</text>
+    <path d="M58 236H902M58 272H902M58 308H902" stroke="#344360" stroke-width="0.7" stroke-dasharray="3 7" opacity="0.48"/>
+    <rect x="39.50" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="56.35" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="73.19" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="90.04" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="106.88" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="123.73" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="140.58" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="157.42" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="174.27" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="191.12" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="207.96" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="224.81" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="241.65" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="258.50" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="275.35" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="292.19" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="309.04" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="325.88" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="342.73" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="359.58" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="376.42" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="393.27" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="410.12" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="426.96" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="443.81" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="460.65" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="477.50" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="494.35" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="511.19" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="528.04" y="295.84" width="5" height="13.16" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="544.88" y="240.28" width="5" height="68.72" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="561.73" y="297.60" width="5" height="11.40" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="578.58" y="292.88" width="5" height="16.12" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="595.42" y="299.69" width="5" height="9.31" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="612.27" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="629.12" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="645.96" y="302.42" width="5" height="6.58" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="662.81" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="679.65" y="302.42" width="5" height="6.58" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="696.50" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="713.35" y="275.44" width="5" height="33.56" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="730.19" y="262.46" width="5" height="46.54" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="747.04" y="281.86" width="5" height="27.14" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="763.88" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="780.73" y="299.69" width="5" height="9.31" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="797.58" y="297.60" width="5" height="11.40" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="814.42" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="831.27" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="848.12" y="307.00" width="5" height="2.00" rx="2.5" fill="url(#signalBar)" opacity="0.12"/><rect x="864.96" y="302.42" width="5" height="6.58" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="881.81" y="302.42" width="5" height="6.58" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="898.65" y="261.99" width="5" height="47.01" rx="2.5" fill="url(#signalBar)" opacity="0.72"/><rect x="915.50" y="226.00" width="5" height="83.00" rx="2.5" fill="url(#signalBar)" opacity="0.72"/>
+    <path d="M42.00 309.00 L58.85 309.00 L75.69 309.00 L92.54 309.00 L109.38 309.00 L126.23 309.00 L143.08 309.00 L159.92 309.00 L176.77 309.00 L193.62 309.00 L210.46 309.00 L227.31 309.00 L244.15 309.00 L261.00 309.00 L277.85 309.00 L294.69 309.00 L311.54 309.00 L328.38 309.00 L345.23 309.00 L362.08 309.00 L378.92 309.00 L395.77 309.00 L412.62 309.00 L429.46 309.00 L446.31 309.00 L463.15 309.00 L480.00 309.00 L496.85 309.00 L513.69 309.00 L530.54 295.84 L547.38 240.28 L564.23 297.60 L581.08 292.88 L597.92 299.69 L614.77 309.00 L631.62 309.00 L648.46 302.42 L665.31 309.00 L682.15 302.42 L699.00 309.00 L715.85 275.44 L732.69 262.46 L749.54 281.86 L766.38 309.00 L783.23 299.69 L800.08 297.60 L816.92 309.00 L833.77 309.00 L850.62 309.00 L867.46 302.42 L884.31 302.42 L901.15 261.99 L918.00 226.00" fill="none" stroke="#6EE7F9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.84" filter="url(#signalGlow)"/>
+    <circle cx="918.00" cy="226.00" r="4.5" fill="#E879F9" stroke="#F5D0FE" stroke-width="1.4"/>
+    <text x="58" y="339" class="microcopy">T−52W</text>
+    <text x="902" y="339" text-anchor="end" class="microcopy">NOW // UPDATED 2026-07-31</text>
+  </g>
+
+  <path d="M681 55h40l10 10h25M719 55v-9h28l7 7h22" fill="none" stroke="#50658D" stroke-width="1" opacity="0.34"/>
+  <circle cx="681" cy="55" r="2" fill="#22D3EE" opacity="0.7"/>
+  <circle cx="776" cy="53" r="2" fill="#A78BFA" opacity="0.7"/>
+</svg>
