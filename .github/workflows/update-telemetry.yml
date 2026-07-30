@@ -1,0 +1,52 @@
+name: Update engineering telemetry
+
+on:
+  schedule:
+    # Update once per day without creating noise in the profile repository.
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: engineering-telemetry
+  cancel-in-progress: true
+
+jobs:
+  update:
+    name: Generate public activity signal
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the profile source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate the SVG from GitHub data
+        env:
+          GITHUB_LOGIN: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUTPUT_PATH: ${{ runner.temp }}/engineering-telemetry.svg
+        run: node .github/scripts/generate-telemetry.mjs
+
+      - name: Publish the generated asset
+        env:
+          GENERATED_SVG: ${{ runner.temp }}/engineering-telemetry.svg
+        run: |
+          git fetch origin telemetry
+          git switch --create telemetry --track origin/telemetry
+          mkdir -p assets
+          cp "${GENERATED_SVG}" assets/engineering-telemetry.svg
+          git add assets/engineering-telemetry.svg
+
+          if git diff --cached --quiet; then
+            echo "The engineering telemetry is already current."
+            exit 0
+          fi
+
+          git -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Update engineering telemetry"
+          git push origin telemetry

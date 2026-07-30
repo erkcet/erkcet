@@ -18,9 +18,9 @@ I am a computer engineer who enjoys building dependable software, automating rep
 
 <br /><br />
 
-### GitHub Activity
+### Engineering Signal
 
-<img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=erkcet&theme=tokyonight" alt="Erkan Cetinkaya's GitHub activity overview" />
+<img width="100%" src="https://raw.githubusercontent.com/erkcet/erkcet/telemetry/assets/engineering-telemetry.svg" alt="Erkan Cetinkaya's engineering activity signal" />
 
 <br />
 
